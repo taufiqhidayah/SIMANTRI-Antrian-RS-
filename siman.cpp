@@ -49,6 +49,8 @@ void menuUtama(int i){
 		cout << "1. Lihat Data Pendaftaran Pasie\n";
 		cout << "2. Pendaftaran Pasien \n";
 		cout << "3. Antrian Pasien \n";
+		cout << "4. Logout \n";
+
 		cout << " Masukan Pilihan ";
 		cin>> pil;
 		switch(pil){
@@ -61,6 +63,9 @@ void menuUtama(int i){
 			case 3 :
 			deletePasien();
 			break;
+			case 4:
+                system("pause");
+                main();
 		}
 	}else{
 	    int pilihan;
@@ -200,10 +205,12 @@ void inputPasien(){
         cin >> thn;
 
 
+        Registrasi * sm = &pasien;
+
         pasien.setNama(name);
         pasien.setJk(jk);
 
-        string qrya="insert into pasien(id,name,jk,umur) values('"+id+"','"+pasien.getNama()+"','"+pasien.getJk()+"','"+thn+"')";
+        string qrya="insert into pasien(id,name,jk,thn) values('"+id+"','"+pasien.getNama()+"','"+pasien.getJk()+"','"+thn+"')";
 
         const char* q = qrya.c_str();
         cout<<"query is: "<<q<<endl;
