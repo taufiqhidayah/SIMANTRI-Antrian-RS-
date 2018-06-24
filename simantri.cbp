@@ -42,6 +42,7 @@
 			<Option target="Release" />
 		</Unit>
 		<Unit filename="indux.h" />
+		<Unit filename="koneksi.h" />
 		<Unit filename="main.cpp">
 			<Option target="Release" />
 		</Unit>
