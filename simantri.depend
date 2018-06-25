@@ -236,7 +236,7 @@
 
 1476091777 c:\program files (x86)\codeblocks\mingw\include\my_alloc.h
 
-1529851125 source:c:\users\taufiq hidayah\desktop\simantri\siman.cpp
+1529897211 source:c:\users\taufiq hidayah\desktop\simantri\siman.cpp
 	<iostream>
 	<string>
 	<stdlib.h>
@@ -261,14 +261,14 @@
 	<mysql.h>
 	<stdio.h>
 
-1529628901 c:\users\taufiq hidayah\desktop\simantri\koneksi.h
+1529896677 c:\users\taufiq hidayah\desktop\simantri\koneksi.h
 	<iostream>
 	<string>
 	<windows.h>
 	<mysql.h>
 	<stdio.h>
 
-1529851604 c:\users\taufiq hidayah\desktop\simantri\pasien.h
+1529897902 c:\users\taufiq hidayah\desktop\simantri\pasien.h
 	<iostream>
 	<string>
 	<windows.h>

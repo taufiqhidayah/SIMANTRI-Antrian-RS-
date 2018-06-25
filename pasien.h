@@ -39,17 +39,19 @@ public:
 };
 class Pasien : public Registrasi{
    private:
-       string nama;
+       string name;
        string umur;
     public:
     void setUmur(int umur){
         this-> umur = umur;
     }
-  std::string::size_type sz;   // alias of size_t
+    void setUmur(string umur){
+        this-> umur = umur;
+    }
+    std::string::size_type sz;   // alias of size_t
     string getUmur(){
+        return umur;
 
     }
-    int countUmur(int getUmur()){
-        return 2016 - getUmur();
-    }
+
 };

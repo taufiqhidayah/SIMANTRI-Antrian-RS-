@@ -23,3 +23,16 @@ class Simantri{
 			return poli;
 		}
 };
+//Overriding example
+class Pesan {
+    public:
+    string pesan(){
+        return "Sukses Menyimpan";
+    }
+};
+class PesanRegis : public Pesan{
+    public:
+    string pesan(){
+        return "Registrasi Sukses";
+    }
+};

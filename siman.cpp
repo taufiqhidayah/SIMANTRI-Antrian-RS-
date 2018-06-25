@@ -16,9 +16,15 @@ int menuPil;
 Konek konek;
 Pasien pasien;
 Registrasi registasi;
+PesanRegis pesanshow;
+
 bool isLogin(int x);
+
 void menuUtama(int i);
-void lihatData();
+//OverloadingExample
+void lihatData(int x);
+void lihatData(int x,string y);
+
 void inputPasien();
 void deletePasien();
 
@@ -38,44 +44,6 @@ void getKoneksi(){
 		cout<<"connection problem: "<<mysql_error(conn)<<endl;
 	}
 	mysql_close(conn);
-}
-void menuUtama(int i){
-	if(i==1){
-        system("cls");
-		int pil;
-		isLogin(1);
-		cout<<"Selamat Datang Admin di RS MANTRI\n";
-		cout<<"===========================\n";
-		cout << "1. Lihat Data Pendaftaran Pasie\n";
-		cout << "2. Pendaftaran Pasien \n";
-		cout << "3. Antrian Pasien \n";
-		cout << "4. Logout \n";
-
-		cout << " Masukan Pilihan ";
-		cin>> pil;
-		switch(pil){
-			case 1:
-			lihatData();
-			break;
-			case 2 :
-			inputPasien();
-			break;
-			case 3 :
-			deletePasien();
-			break;
-			case 4:
-                system("pause");
-                main();
-		}
-	}else{
-	    int pilihan;
-		isLogin(1);
-        system("cls");
-		cout<<"Selamat Datang Pasien di RS MANTRI\n";
-		cout<<"===========================\n";
-        lihatData();
-
-	}
 }
 int main()
 {
@@ -139,9 +107,9 @@ int main()
 
 			cout<<"query is: "<<q<<endl;
 			qstate = mysql_query(konek.conn,q);
-
+           cout<<  pesanshow.pesan();
 			if(!qstate)
-			cout<<"record inserted successfully..."<<endl;
+			pesanshow.pesan();
 			else
 			cout<<"query problem: "<<mysql_error(konek.conn)<<endl;
 
@@ -154,6 +122,45 @@ int main()
 
 	return 0;
 }
+
+void menuUtama(int i){
+	if(i==1){
+        system("cls");
+		int pil;
+		isLogin(1);
+		cout<<"Selamat Datang Admin di RS MANTRI\n";
+		cout<<"===========================\n";
+		cout << "1. Lihat Data Pendaftaran Pasie\n";
+		cout << "2. Pendaftaran Pasien \n";
+		cout << "3. Antrian Pasien \n";
+		cout << "4. Logout \n";
+
+		cout << " Masukan Pilihan ";
+		cin>> pil;
+		switch(pil){
+			case 1:
+			lihatData(1);
+			break;
+			case 2 :
+			inputPasien();
+			break;
+			case 3 :
+			deletePasien();
+			break;
+			case 4:
+                system("pause");
+                main();
+		}
+	}else{
+	    int pilihan;
+		isLogin(1);
+        system("cls");
+		cout<<"Selamat Datang Pasien di RS MANTRI\n";
+		cout<<"===========================\n";
+        lihatData(1,"pasien");
+
+	}
+}
 bool isLogin(int x){
 
 	if(x!=1){
@@ -161,7 +168,15 @@ bool isLogin(int x){
 	}
 	return status;
 }
-void lihatData(){
+int isLogin(bool x, int y){
+    x= status;
+    if(y ==1){
+        cout<< "LOGIN";
+    }else{
+        cout<< "Logout";
+    }
+}
+void lihatData(int x){
     system("cls");
 	MYSQL_ROW row;
 	MYSQL_RES *res;
@@ -179,6 +194,40 @@ void lihatData(){
 			}
 			system("pause");
             menuUtama(menuPil);
+		}else{
+			cout<<"query error: "<<mysql_error(konek.conn)<<endl;
+		}
+
+	}
+	else{
+		cout<<"connection problem: "<<mysql_error(konek.conn)<<endl;
+	}
+	mysql_close(konek.conn);
+}
+
+void lihatData(int x , string y){
+    system("cls");
+	MYSQL_ROW row;
+	MYSQL_RES *res;
+	int qstate;
+	if(status==TRUE){
+		qstate = mysql_query(konek.conn,"select * from pasien");
+        cout<< "DATA PASIEN\n";
+        cout << "===========================\n";
+		if(!qstate){
+			res = mysql_store_result(konek.conn);
+			while(row=mysql_fetch_row(res)){
+				cout<<"ID: \t\t"<<row[0]<< " "
+				<<"Name: \t\t"<<row[1]<< " "
+				<<"Gender: "<<row[2]<<endl;
+			}
+			cout<< "1. Logout";
+            int pil;
+            cin>> pil;
+            if (pil ==1 ){
+                system("pause");
+                main();
+            }
 		}else{
 			cout<<"query error: "<<mysql_error(konek.conn)<<endl;
 		}
@@ -207,12 +256,14 @@ void inputPasien(){
 
         Registrasi * sm = &pasien;
 
+        pasien.setUmur(thn);
         pasien.setNama(name);
         pasien.setJk(jk);
 
-        string qrya="insert into pasien(id,name,jk,thn) values('"+id+"','"+pasien.getNama()+"','"+pasien.getJk()+"','"+thn+"')";
+        string qrya="insert into pasien(id,name,jk,thn) values('"+id+"','"+pasien.getNama()+"','"+pasien.getJk()+"','"+pasien.getUmur()+"')";
 
         const char* q = qrya.c_str();
+
         cout<<"query is: "<<q<<endl;
         qstate = mysql_query(konek.conn,q);
         if(!qstate)
@@ -231,5 +282,5 @@ void deletePasien(){
     qstate = mysql_query(konek.conn,query.c_str());
     res = mysql_store_result(konek.conn);
     system("pause");
-    lihatData();
+    lihatData(1);
 }
