@@ -11,6 +11,7 @@ protected:
     int id;
     string password,nama,jk,usname;
 public:
+    //Polymorphysm
   virtual void setNama(string nama){
         this->nama = nama;
     }
@@ -37,18 +38,22 @@ public:
         return usname;
     }
 };
+
 class Pasien : public Registrasi{
    private:
-       string name;
        string umur;
     public:
+    //Polymorphysm
+    void setNama(string nama){
+        this->nama = nama;
+    }
     void setUmur(int umur){
         this-> umur = umur;
     }
     void setUmur(string umur){
         this-> umur = umur;
     }
-    std::string::size_type sz;   // alias of size_t
+
     string getUmur(){
         return umur;
 

@@ -4,6 +4,7 @@
 #include <windows.h>
 #include <mysql.h>
 #include <stdio.h>
+#include <algorithm>
 #include "indux.h"
 #include "pasien.h"
 #include "admin.h"
@@ -31,7 +32,6 @@ void deletePasien();
 void getKoneksi(){
 	MYSQL* conn;
 	MYSQL_ROW row;
-	MYSQL_RES *res;
 	int qstate;
     int getData;
 	conn = mysql_init(0);
@@ -71,19 +71,22 @@ int main()
 			cout<<"Password";
 			cin>>password;
 			string query = "SELECT * FROM admin WHERE user=\'" + user + "\' && pass=\'" + password + "\'";
+            //String
 			qstate = mysql_query(konek.conn,query.c_str());
 			res = mysql_store_result(konek.conn);
 			if(mysql_num_rows(res)>0){
+                //generic programming find
 				if(user.find("admin")){
 					menuPil =2;
 					menuUtama(2);
-
 				}else{
                     menuPil =1;
 					menuUtama(1);
 				}
 			}else{
 				cout<<"gagal";
+                system("pause");
+                main();
 			}
 		} else{
 			string usname,name,jk,id, pass;
@@ -102,17 +105,18 @@ int main()
 			registasi.setJk(jk);
 			registasi.setNama(name);
 			string qrya="insert into admin(user, pass,nama, jk) values('"+registasi.getUsName()+"','"+registasi.getPassword()+"','"+registasi.getNama()+"','"+registasi.getJk()+"')";
-
+            //STRING CLASS
 			const char* q = qrya.c_str();
 
 			cout<<"query is: "<<q<<endl;
 			qstate = mysql_query(konek.conn,q);
-           cout<<  pesanshow.pesan();
+            cout<<  pesanshow.pesan();
 			if(!qstate)
 			pesanshow.pesan();
 			else
 			cout<<"query problem: "<<mysql_error(konek.conn)<<endl;
-
+            system("pause");
+            main();
 		}
 	}
 	else if (status== FALSE){
@@ -162,7 +166,6 @@ void menuUtama(int i){
 	}
 }
 bool isLogin(int x){
-
 	if(x!=1){
 		status= FALSE;
 	}
@@ -176,6 +179,7 @@ int isLogin(bool x, int y){
         cout<< "Logout";
     }
 }
+
 void lihatData(int x){
     system("cls");
 	MYSQL_ROW row;

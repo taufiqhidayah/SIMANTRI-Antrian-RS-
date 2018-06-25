@@ -236,13 +236,14 @@
 
 1476091777 c:\program files (x86)\codeblocks\mingw\include\my_alloc.h
 
-1529897211 source:c:\users\taufiq hidayah\desktop\simantri\siman.cpp
+1529910978 source:c:\users\taufiq hidayah\desktop\simantri\siman.cpp
 	<iostream>
 	<string>
 	<stdlib.h>
 	<windows.h>
 	<mysql.h>
 	<stdio.h>
+	<algorithm>
 	"indux.h"
 	"pasien.h"
 	"admin.h"
@@ -254,21 +255,21 @@
 	<stdarg.h>
 	<sys/types.h>
 
-1529846981 c:\users\taufiq hidayah\desktop\simantri\indux.h
+1529898825 c:\users\taufiq hidayah\desktop\simantri\indux.h
 	<iostream>
 	<string>
 	<windows.h>
 	<mysql.h>
 	<stdio.h>
 
-1529896677 c:\users\taufiq hidayah\desktop\simantri\koneksi.h
+1529910625 c:\users\taufiq hidayah\desktop\simantri\koneksi.h
 	<iostream>
 	<string>
 	<windows.h>
 	<mysql.h>
 	<stdio.h>
 
-1529897902 c:\users\taufiq hidayah\desktop\simantri\pasien.h
+1529910584 c:\users\taufiq hidayah\desktop\simantri\pasien.h
 	<iostream>
 	<string>
 	<windows.h>

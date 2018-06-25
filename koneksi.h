@@ -13,8 +13,10 @@ class Konek{
 	int qstate;
 
 	    Konek(){
-	    conn = mysql_init(0);
-        conn = mysql_real_connect(conn,"localhost","root","","simantri",0,NULL,0);
+            conn = mysql_init(0);
+            conn = mysql_real_connect(conn,"localhost","root","","simantri",0,NULL,0);
 	    }
-
+        ~Konek(){
+           cout<<"DISCONNECT";
+	    }
 };
